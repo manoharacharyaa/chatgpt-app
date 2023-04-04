@@ -12,6 +12,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   var text = "Hold the button and start speeking";
+  var isListening = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,17 +46,29 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       floatingActionButton: AvatarGlow(
         endRadius: 75,
-        animate: true,
+        animate: isListening,
         repeat: true,
         repeatPauseDuration: Duration(milliseconds: 100),
         showTwoGlows: true,
         duration: Duration(milliseconds: 2000),
-        child: CircleAvatar(
-          backgroundColor: Pallete.floatingButtonColor,
-          radius: 40,
-          child: Icon(
-            size: 35,
-            Icons.mic,
+        child: GestureDetector(
+          onTapDown: (details) {
+            setState(() {
+              isListening = true;
+            });
+          },
+          onTapUp: (details) {
+            setState(() {
+              isListening = false;
+            });
+          },
+          child: CircleAvatar(
+            backgroundColor: Pallete.floatingButtonColor,
+            radius: 40,
+            child: Icon(
+              size: 35,
+              isListening ? Icons.mic : Icons.mic_none,
+            ),
           ),
         ),
       ),
