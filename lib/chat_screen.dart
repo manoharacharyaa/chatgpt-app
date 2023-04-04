@@ -44,8 +44,9 @@ class _ChatScreenState extends State<ChatScreen> {
           child: Text(
             text,
             style: TextStyle(
-              color: Colors.white,
+              color: isListening ? Colors.white : Colors.grey,
               fontSize: 20,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
