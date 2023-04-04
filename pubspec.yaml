@@ -38,6 +38,7 @@ dependencies:
   flutter_native_splash: ^2.2.19
   animated_splash_screen: ^1.3.0
   avatar_glow: ^2.0.2
+  speech_to_text: ^6.1.1
 
 dev_dependencies:
   flutter_test:
