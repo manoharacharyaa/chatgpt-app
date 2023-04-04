@@ -1,3 +1,4 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:sakecbot/pallete.dart';
 import 'dry/theme.dart';
@@ -42,12 +43,20 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ),
       ),
-      floatingActionButton: CircleAvatar(
-        backgroundColor: Pallete.floatingButtonColor,
-        radius: 40,
-        child: Icon(
-          size: 35,
-          Icons.mic,
+      floatingActionButton: AvatarGlow(
+        endRadius: 75,
+        animate: true,
+        repeat: true,
+        repeatPauseDuration: Duration(milliseconds: 100),
+        showTwoGlows: true,
+        duration: Duration(milliseconds: 2000),
+        child: CircleAvatar(
+          backgroundColor: Pallete.floatingButtonColor,
+          radius: 40,
+          child: Icon(
+            size: 35,
+            Icons.mic,
+          ),
         ),
       ),
     );
