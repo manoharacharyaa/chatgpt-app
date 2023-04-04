@@ -1,6 +1,7 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:sakecbot/pallete.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 import 'dry/theme.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -11,6 +12,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  SpeechToText speechToText = SpeechToText();
   var text = "Hold the button and start speeking";
   var isListening = false;
 
@@ -52,15 +54,28 @@ class _ChatScreenState extends State<ChatScreen> {
         showTwoGlows: true,
         duration: Duration(milliseconds: 2000),
         child: GestureDetector(
-          onTapDown: (details) {
-            setState(() {
-              isListening = true;
-            });
+          onTapDown: (details) async {
+            if (!isListening) {
+              var available = await speechToText.initialize();
+              if (available) {
+                setState(() {
+                  isListening = true;
+                  speechToText.listen(
+                    onResult: (result) {
+                      setState(() {
+                        text = result.recognizedWords;
+                      });
+                    },
+                  );
+                });
+              }
+            }
           },
           onTapUp: (details) {
             setState(() {
               isListening = false;
             });
+            speechToText.stop();
           },
           child: CircleAvatar(
             backgroundColor: Pallete.floatingButtonColor,
