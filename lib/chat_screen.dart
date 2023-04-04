@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sakecbot/pallete.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'dry/theme.dart';
+import 'dry/chat_theme.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -34,21 +35,29 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        reverse: true,
-        physics: const BouncingScrollPhysics(),
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-          margin: EdgeInsets.only(bottom: 150),
-          alignment: Alignment.center,
-          child: Text(
-            text,
-            style: TextStyle(
-              color: isListening ? Colors.white : Colors.grey,
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+            Text(
+              text,
+              style: TextStyle(
+                color: isListening ? Colors.white : Colors.grey,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
+            Expanded(
+              child: ChatTheme(
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                radius: BorderRadius.circular(15),
+                begning: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: AvatarGlow(
@@ -83,7 +92,7 @@ class _ChatScreenState extends State<ChatScreen> {
             speechToText.stop();
           },
           child: CircleAvatar(
-            backgroundColor: Pallete.floatingButtonColor,
+            backgroundColor: Pallete.themeColor,
             radius: 40,
             child: Icon(
               size: 35,

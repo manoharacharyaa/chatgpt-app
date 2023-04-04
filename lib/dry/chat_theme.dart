@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 
-class CustomeTheme extends StatelessWidget {
-  const CustomeTheme({required this.begning, required this.end});
+class ChatTheme extends StatelessWidget {
+  const ChatTheme(
+      {required this.begning,
+      required this.end,
+      this.radius,
+      this.margin,
+      this.padding});
 
   final begning;
   final end;
+  final radius;
+  final margin;
+  final padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: margin,
+      padding: padding,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: begning,
           end: end,
           colors: [Color(0XFF24243e), Color(0XFF302b63)],
         ),
+        borderRadius: radius,
       ),
     );
   }
