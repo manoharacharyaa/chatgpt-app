@@ -34,15 +34,19 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-        margin: EdgeInsets.only(bottom: 150),
-        alignment: Alignment.center,
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
+      body: SingleChildScrollView(
+        reverse: true,
+        physics: const BouncingScrollPhysics(),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          margin: EdgeInsets.only(bottom: 150),
+          alignment: Alignment.center,
+          child: Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
           ),
         ),
       ),
