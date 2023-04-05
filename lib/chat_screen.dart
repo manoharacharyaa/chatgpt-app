@@ -1,5 +1,6 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:sakecbot/api/api_services.dart';
 import 'package:sakecbot/dry/chat_bubble.dart';
 import 'package:sakecbot/dry/chat_model.dart';
 import 'package:sakecbot/pallete.dart';
@@ -18,6 +19,15 @@ class _ChatScreenState extends State<ChatScreen> {
   SpeechToText speechToText = SpeechToText();
   var text = "Hold the button and start speeking";
   var isListening = false;
+
+  final List<ChatMessage> messages = [];
+
+  var scrollController = ScrollController();
+
+  scrollMethod() {
+    scrollController.animateTo(scrollController.position.maxScrollExtent,
+        duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +68,15 @@ class _ChatScreenState extends State<ChatScreen> {
                 begning: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 chatBubble: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  controller: scrollController,
                   shrinkWrap: true,
-                  itemCount: 4,
+                  itemCount: messages.length,
                   itemBuilder: (BuildContext context, int index) {
+                    var chat = messages[index];
                     return chatBubble(
-                      chattext: "How are you doing",
-                      type: ChatMessageType.user,
+                      chattext: chat.text,
+                      type: chat.type,
                     );
                   },
                 ),
@@ -97,11 +110,16 @@ class _ChatScreenState extends State<ChatScreen> {
               }
             }
           },
-          onTapUp: (details) {
+          onTapUp: (details) async {
             setState(() {
               isListening = false;
             });
             speechToText.stop();
+            messages.add(ChatMessage(text: text, type: ChatMessageType.user));
+            var msg = await ApiServices.sendMessage(text);
+            setState(() {
+              messages.add(ChatMessage(text: text, type: ChatMessageType.bot));
+            });
           },
           child: CircleAvatar(
             backgroundColor: Pallete.themeColor,

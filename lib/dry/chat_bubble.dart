@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sakecbot/dry/chat_model.dart';
 import 'package:sakecbot/pallete.dart';
 
-Widget chatBubble({required chattext, required ChatMessageType type}) {
+Widget chatBubble({required chattext, required ChatMessageType? type}) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [

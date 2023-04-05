@@ -36,3 +36,6 @@ class ApiServices {
     }
   }
 }
+
+
+//TODO: make everything static to acces in chat_screen
