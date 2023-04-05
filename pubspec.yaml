@@ -68,6 +68,7 @@ flutter:
     - assets/images/splashlogo.png
     - assets/images/chatbotlogo.png
     - assets/images/chatbot-transperant.png
+    - assets/images/menubanner.jpg
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

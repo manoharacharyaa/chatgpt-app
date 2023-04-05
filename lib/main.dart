@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:sakecbot/NavBar/about.dart';
 import 'dry/pallete.dart';
 import 'chat_screen.dart';
 
@@ -24,6 +25,10 @@ class SakecBot extends StatelessWidget {
         backgroundColor: Pallete.themeColor,
         splashIconSize: 500,
       ),
+      routes: {
+        '/first': (context) => AboutApp(),
+        '/second': (context) => ChatScreen(),
+      },
     );
   }
 }

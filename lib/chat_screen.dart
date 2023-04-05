@@ -4,10 +4,10 @@ import 'package:sakecbot/api/api_services.dart';
 import 'package:sakecbot/dry/chat_bubble.dart';
 import 'package:sakecbot/dry/chat_model.dart';
 import 'package:sakecbot/dry/pallete.dart';
+import 'package:sakecbot/NavBar/nav_bar.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'dry/theme.dart';
 import 'dry/chat_theme.dart';
-import 'package:sakecbot/chat_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -35,6 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       backgroundColor: Pallete.themeColor,
+      drawer: NavBar(),
       appBar: AppBar(
         centerTitle: true,
         flexibleSpace: CustomeTheme(
