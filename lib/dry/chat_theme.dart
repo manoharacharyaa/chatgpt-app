@@ -6,13 +6,15 @@ class ChatTheme extends StatelessWidget {
       required this.end,
       this.radius,
       this.margin,
-      this.padding});
+      this.padding,
+      required this.chatBubble});
 
   final begning;
   final end;
   final radius;
   final margin;
   final padding;
+  final chatBubble;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class ChatTheme extends StatelessWidget {
         ),
         borderRadius: radius,
       ),
+      child: chatBubble,
     );
   }
 }

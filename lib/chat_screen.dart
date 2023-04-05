@@ -1,5 +1,7 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:sakecbot/dry/chat_bubble.dart';
+import 'package:sakecbot/dry/chat_model.dart';
 import 'package:sakecbot/pallete.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'dry/theme.dart';
@@ -55,6 +57,16 @@ class _ChatScreenState extends State<ChatScreen> {
                 radius: BorderRadius.circular(15),
                 begning: Alignment.topLeft,
                 end: Alignment.bottomRight,
+                chatBubble: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 4,
+                  itemBuilder: (BuildContext context, int index) {
+                    return chatBubble(
+                      chattext: "How are you doing",
+                      type: ChatMessageType.user,
+                    );
+                  },
+                ),
               ),
             ),
           ],
