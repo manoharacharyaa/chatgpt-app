@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:sakecbot/pallete.dart';
+import 'dry/pallete.dart';
 import 'chat_screen.dart';
 
 void main() {
@@ -18,7 +18,8 @@ class SakecBot extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: AnimatedSplashScreen(
-        splash: 'assets/images/splash_logo.png',
+        splashTransition: SplashTransition.scaleTransition,
+        splash: 'assets/images/splashlogo.png',
         nextScreen: ChatScreen(),
         backgroundColor: Pallete.themeColor,
         splashIconSize: 500,

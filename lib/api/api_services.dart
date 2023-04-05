@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-String apiKey = 'here goes your API Key';
+String apiKey = '';
 
 class ApiServices {
   static String baseUrl = "https://api.openai.com/v1/completions";
@@ -36,6 +36,3 @@ class ApiServices {
     }
   }
 }
-
-
-//TODO: make everything static to acces in chat_screen

@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:sakecbot/api/api_services.dart';
 import 'package:sakecbot/dry/chat_bubble.dart';
 import 'package:sakecbot/dry/chat_model.dart';
-import 'package:sakecbot/pallete.dart';
+import 'package:sakecbot/dry/pallete.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'dry/theme.dart';
 import 'dry/chat_theme.dart';
+import 'package:sakecbot/chat_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -65,8 +66,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 radius: BorderRadius.circular(15),
-                begning: Alignment.topLeft,
-                end: Alignment.bottomRight,
+                begning: Alignment.bottomRight,
+                end: Alignment.topRight,
                 chatBubble: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   controller: scrollController,
@@ -118,7 +119,7 @@ class _ChatScreenState extends State<ChatScreen> {
             messages.add(ChatMessage(text: text, type: ChatMessageType.user));
             var msg = await ApiServices.sendMessage(text);
             setState(() {
-              messages.add(ChatMessage(text: text, type: ChatMessageType.bot));
+              messages.add(ChatMessage(text: msg, type: ChatMessageType.bot));
             });
           },
           child: CircleAvatar(
