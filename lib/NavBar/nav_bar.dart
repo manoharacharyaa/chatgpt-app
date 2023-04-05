@@ -54,6 +54,17 @@ class _NavBarState extends State<NavBar> {
           ),
           NavTile(
             text: Text(
+              'AI Chat',
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+            ),
+            icon: Icon(
+              Icons.chat,
+              color: Colors.white,
+            ),
+            navigation: '/chatscreen',
+          ),
+          NavTile(
+            text: Text(
               'Share',
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             ),
