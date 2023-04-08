@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:flutter/services.dart';
 import 'package:sakecbot/NavBar/about.dart';
+import 'package:sakecbot/chats/chat_screen.dart';
 import 'package:sakecbot/dry/tts.dart';
 import 'package:sakecbot/text_to_speech.dart';
 import 'dry/pallete.dart';
@@ -26,14 +26,14 @@ class SakecBot extends StatelessWidget {
       home: AnimatedSplashScreen(
         splashTransition: SplashTransition.scaleTransition,
         splash: 'assets/images/splashlogo.png',
-        nextScreen: ChatScreen(),
+        nextScreen: SpeechScreen(),
         backgroundColor: Pallete.themeColor,
         splashIconSize: 500,
       ),
       routes: {
         '/first': (context) => AboutApp(),
-        '/second': (context) => ChatScreen(),
-        '/chatscreen': (context) => TTSScreen(),
+        '/second': (context) => SpeechScreen(),
+        '/chatscreen': (context) => ChatScreen(),
       },
     );
   }

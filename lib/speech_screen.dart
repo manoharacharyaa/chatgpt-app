@@ -10,14 +10,14 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'dry/theme.dart';
 import 'dry/chat_theme.dart';
 
-class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+class SpeechScreen extends StatefulWidget {
+  const SpeechScreen({super.key});
 
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
+  State<SpeechScreen> createState() => _SpeechScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _SpeechScreenState extends State<SpeechScreen> {
   SpeechToText speechToText = SpeechToText();
   var text = "Hold the button and start speeking";
   var isListening = false;
