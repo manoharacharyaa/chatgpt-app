@@ -43,6 +43,7 @@ dependencies:
   flutter_tts: ^3.6.3
   velocity_x: ^3.6.0
   chat_gpt_sdk: ^2.0.7
+  url_launcher: ^6.1.10
 
 
 

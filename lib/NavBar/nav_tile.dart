@@ -6,12 +6,14 @@ class NavTile extends StatelessWidget {
     super.key,
     required this.text,
     required this.icon,
-    required this.navigation,
+    this.navigation,
+    this.onclick,
   });
 
   final text;
   final icon;
   final navigation;
+  final onclick;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class NavTile extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(11)),
         ),
-        onTap: () {
+        onTap: () async {
           Navigator.pushNamed(context, navigation);
         },
       ),

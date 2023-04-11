@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sakecbot/dry/pallete.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'nav_tile.dart';
 
 class NavBar extends StatefulWidget {
@@ -85,7 +86,39 @@ class _NavBarState extends State<NavBar> {
             ),
             navigation: '/first',
           ),
+          content(),
         ],
+      ),
+    );
+  }
+
+  Widget content() {
+    final Uri url = Uri.parse("https://platform.openai.com/docs/api-reference");
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Pallete.themeColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              child: Text(
+                "Learn More",
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                launchUrl(url);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

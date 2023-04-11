@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:sakecbot/NavBar/about.dart';
-import 'package:sakecbot/chats/chat_screen.dart';
+import 'package:sakecbot/chat/chat_screen.dart';
 import 'package:sakecbot/dry/tts.dart';
-import 'package:sakecbot/text_to_speech.dart';
 import 'dry/pallete.dart';
 import 'speech_screen.dart';
 
@@ -33,7 +32,7 @@ class SakecBot extends StatelessWidget {
       routes: {
         '/first': (context) => AboutApp(),
         '/second': (context) => SpeechScreen(),
-        '/chatscreen': (context) => ChatScreen(),
+        '/chatscreen': (context) => ChatGPTScreen(),
       },
     );
   }
